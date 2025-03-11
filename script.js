@@ -1,6 +1,13 @@
 const numbers = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 10000));
 console.log("Non trié :", numbers)
 
+
+
+selectionSort(numbers);
+a = selectionSort(numbers);
+console.log(a);
+testSort(selectionSort, numbers);
+
 insertionSort(numbers);
 a = insertionSort(numbers);
 console.log(a);
@@ -16,6 +23,22 @@ testSort(bubbleSort, numbers);
 // 1 bubbleSort 2 insertionsort 3 selectionSort 4 mergeSort 5 quicksort 6 bogoSort
 // pr calculer le temps d'execution on va utiliser cosole.time() de javascript
 // on implémente les diff algorithme et on va comparer leurs temps d'execution
+
+
+function selectionSort(numbers) {
+    for (let i = 0; i < numbers.length; i++) {
+        let low = i;
+        for (let j = i + 1; j < numbers.length; j++) {
+            if (numbers[j] < numbers[low]) {
+                low = j;
+            }
+            if (low !== i) {
+                [numbers[i], numbers[low]] = [numbers[low], numbers[i]];
+            }
+        }
+    }
+    return numbers;
+}
 
 
 
